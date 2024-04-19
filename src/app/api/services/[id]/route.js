@@ -10,9 +10,11 @@ export async function GET(request, { params }) {
   }
 }
 
-export async function POST() {}
+export async function POST(request) {}
 
 export async function PUT() {}
+
+export async function PATCH() {}
 
 export async function DELETE() {}
 
