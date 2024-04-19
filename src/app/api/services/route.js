@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
-import { getServices, postService } from "@/libs/data";
-import { conn } from "@/libs/mysql";
+import { getServices, postService, deleteServices } from "@/libs/data";
+
+// TODO: Add error handling and check wrong data type
+
 /**
  * Retrieves services from the database and returns them as a JSON response.
  *
@@ -9,9 +11,16 @@ import { conn } from "@/libs/mysql";
 export async function GET() {
   try {
     const services = await getServices();
-    return NextResponse.json(services);
+    if (services) {
+      return NextResponse.json(services);
+    } else {
+      return NextResponse.json({ error: "No services found" }, { status: 404 });
+    }
   } catch (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json(
+      { error: error.message, message: "Services GET error" },
+      { status: 500 }
+    );
   }
 }
 
@@ -23,25 +32,23 @@ export async function GET() {
  */
 export async function POST(request) {
   try {
-    const { name, description, price } = await request.json();
-    const result = await postService(name, description, price);
-    return NextResponse.json(result);
-  } catch (error) {
-    if (error instanceof SyntaxError) {
+    const data = await request.json();
+    const result = await postService(data);
+    if (!result) {
       return NextResponse.json(
-        { error: "Invalid JSON payload" },
-        { status: 400 }
+        { error: "Service not created", message: "Service not created" },
+        { status: 404 }
+      );
+    } else {
+      return NextResponse.json(
+        { message: "Service created successfully" },
+        { status: 200 }
       );
     }
+  } catch (error) {
     return NextResponse.json(
-      { error: "Internal Server Error" },
+      { error: error.message, message: "Services POST error" },
       { status: 500 }
     );
   }
 }
-
-export async function PUT() {}
-
-export async function PATCH() {}
-
-export async function DELETE() {}
