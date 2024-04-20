@@ -2,12 +2,13 @@ import { conn } from "./mysql";
 
 //TODO: Add error handling and check wrong data type
 
-// region SERVICES DB
+// region 1.SERVICES
 /**
  * A function that retrieves all services from the database.
  *
  * @return {Array} services data from the database
  */
+// region GET ALL
 export const getServices = async () => {
   try {
     const sql = "SELECT * FROM service";
@@ -24,6 +25,7 @@ export const getServices = async () => {
  * @param {number} id - The ID of the service to retrieve.
  * @return {object} The retrieved service object.
  */
+// region GET ID
 export const getService = async (id) => {
   try {
     const sql = "SELECT * FROM service WHERE id = ?";
@@ -42,6 +44,8 @@ export const getService = async (id) => {
  * @param {number} price - The price of the service.
  * @return {void}
  */
+
+// region POST
 export const postService = async (data) => {
   try {
     const sql =
@@ -60,6 +64,7 @@ export const postService = async (data) => {
  * @param {number} id - The ID of the service to update.
  * @return {Promise<void>} A Promise that resolves when the service is deleted.
  */
+// region PATCH
 export const updateService = async (data, id) => {
   try {
     const sql = "UPDATE service SET ? WHERE id = ?";
@@ -77,6 +82,7 @@ export const updateService = async (data, id) => {
  * @param {number} id - The ID of the service to delete.
  * @return {Promise<void>} A Promise that resolves when the service is deleted.
  */
+// region DELETE
 export const deleteService = async (id) => {
   try {
     const sql = "DELETE FROM service WHERE id = ?";
@@ -85,3 +91,10 @@ export const deleteService = async (id) => {
     console.log(error, "error deleting service");
   }
 };
+
+// region 2.USER
+
+const bcrypt = require('bcrypt');
+export const saltAndHashPassword = (password) => {
+  
+}

@@ -1,11 +1,11 @@
-import { signIn } from "@/auth"
- 
+import { signIn } from "@/auth";
+
 export function SignIn() {
   return (
     <form
       action={async (formData) => {
-        "use server"
-        await signIn("credentials", formData)
+        "use server";
+        await signIn("credentials", formData);
       }}
     >
       <label>
@@ -18,5 +18,5 @@ export function SignIn() {
       </label>
       <button>Sign In</button>
     </form>
-  )
+  );
 }
