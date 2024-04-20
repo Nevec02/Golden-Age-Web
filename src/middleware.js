@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 
-export function middleware(request) {
+export { auth as middleware } from "@/auth"
+
+/*export*/ function middleware(request) {
     // TODO: Add user authentication. For test right now /User is private
     const user = '';
     if(!user)
