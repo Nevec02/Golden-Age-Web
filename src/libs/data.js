@@ -116,24 +116,11 @@ export const getUserFromDb = async (email, password) => {
   }
 }
 
-export const getUserFromDBtesting = async (email, password) => {
-  try{
-    const sql = "SELECT * FROM user WHERE email = ?";
-    const [user] = await conn.query(sql, [email]);
-    if (user.length > 0) {
-      return true;
-    }
-    return false;
-  } catch (error) {
-    console.log(error, "error getting testing user");
-  }
-}
-
-export const postUser = async (data) => {
+export const postUser = async (name, email, password) => {
   try {
     const sql =
       "INSERT INTO user (name, email, pass, rol) VALUES (?, ?, ?, 2)";
-    await conn.query(sql, [data.name, data.email, saltAndHashPassword(data.password)]);
+    await conn.query(sql, [name, email, saltAndHashPassword(password)]);
     return true;
   } catch (error) {
     console.log(error, "error posting user");

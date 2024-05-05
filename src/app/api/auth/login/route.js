@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
-import { getUserFromDBtesting, getUserFromDb, getUsers } from "@/libs/data";
+import { getUserFromDb, getUsers } from "@/libs/data";
 export async function POST(request) {
     const { email, password } = await request.json();
-    const user = await getUserFromDBtesting(email, password);
+    const user = await getUserFromDb(email, password);
     if (user) {
-        return NextResponse.json({ user }, { status: 200 });
+        return NextResponse.json({ message: "User logged in successfully" }, { status: 200 });
     } else {
         return NextResponse.json({ error: "User not found" }, { status: 404 });
     }

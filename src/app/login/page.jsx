@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import axios from "axios";
+import Link from "next/link";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -23,7 +24,7 @@ export default function LoginPage() {
   return (
     <div>
       <h1>LOGIN</h1>
-      {error && <p>{error}</p>}
+      {error && <p>{error}</p> }
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
         <input
@@ -31,6 +32,7 @@ export default function LoginPage() {
           name="email"
           id="email"
           value={email}
+          required
           onChange={(e) => setEmail(e.target.value)}
         />
         <label htmlFor="password">Password</label>
@@ -38,11 +40,13 @@ export default function LoginPage() {
           type="password"
           name="password"
           id="password"
+          required
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit">Login</button>
       </form>
+      <Link href="/register">Register</Link>
     </div>
   );
 }
