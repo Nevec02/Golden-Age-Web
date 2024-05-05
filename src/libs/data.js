@@ -96,5 +96,57 @@ export const deleteService = async (id) => {
 
 const bcrypt = require('bcrypt');
 export const saltAndHashPassword = (password) => {
-  
+  const saltRounds = 10;
+  var hashedPassword = bcrypt.hashSync(password, saltRounds);
+  return hashedPassword;
+};
+
+export const getUserFromDb = async (email, password) => {
+  try {
+    const sql = "SELECT * FROM user WHERE email = ?";
+    const [user] = await conn.query(sql, [email]);
+    if (user.length > 0) {
+      if (bcrypt.compareSync(password, user[0].pass)) {
+        return user[0];
+      }
+    }
+    return false;
+  } catch (error) {
+    console.log(error, "error getting user");
+  }
 }
+
+export const getUserFromDBtesting = async (email, password) => {
+  try{
+    const sql = "SELECT * FROM user WHERE email = ?";
+    const [user] = await conn.query(sql, [email]);
+    if (user.length > 0) {
+      return true;
+    }
+    return false;
+  } catch (error) {
+    console.log(error, "error getting testing user");
+  }
+}
+
+export const postUser = async (data) => {
+  try {
+    const sql =
+      "INSERT INTO user (name, email, pass, rol) VALUES (?, ?, ?, 2)";
+    await conn.query(sql, [data.name, data.email, saltAndHashPassword(data.password)]);
+    return true;
+  } catch (error) {
+    console.log(error, "error posting user");
+  }
+}
+
+export const getUsers = async () => {
+  try {
+    const sql = "SELECT email, name FROM user";
+    const [users] = await conn.query(sql);
+    return users;
+  } catch (error) {
+    console.log(error, "error getting users");
+  }
+}
+
