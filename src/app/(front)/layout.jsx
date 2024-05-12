@@ -1,4 +1,4 @@
-import "./globals.css";
+import "@/app/globals.css";
 
 export const metadata = {
   title: "Index Page",
@@ -8,7 +8,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
-      <body>{children}</body>
+      <body>
+        <h2>Root Layout</h2>
+        {children}
+      </body>
     </html>
   );
 }

@@ -1,15 +1,10 @@
-import { NextResponse } from 'next/server';
-
-/*export*/ function middleware(request) {
-    // TODO: Add user authentication. For test right now /User is private
-    const user = '';
-    if(!user)
-    {
-        return NextResponse.redirect(new URL ('/', request.url));
-    }
-    return NextResponse.next();
-};
-
+import { NextResponse } from 'next/server'
+ 
+export function middleware(request) {
+  return NextResponse.redirect(new URL('/login', request.url))
+}
+ 
 export const config = {
-    matcher: ['/user']
+/*   matcher: '/dashboard/:path*',
+ */  matcher: '/patatas',
 }

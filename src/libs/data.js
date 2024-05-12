@@ -108,11 +108,14 @@ export const getUserFromDb = async (email, password) => {
     if (user.length > 0) {
       if (bcrypt.compareSync(password, user[0].pass)) {
         return user[0];
+      } else {
+        return null;
       }
+    } else {
+      return false;
     }
-    return false;
   } catch (error) {
-    console.log(error, "error getting user");
+    throw new Error("Error getting user from the database: " + error.message);
   }
 }
 
