@@ -2,43 +2,39 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Link from "next/link";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     try {
       const response = await axios.post("/api/auth/login", { email, password });
-      // Handle successful login response
       console.log("Response from server:", response.data);
       if (response.data.message) {
-        window.location.href = "/dashboard";
+        router.push("/dashboard");
       } else {
-        setError(response.data.error); // Set error message from the server
+        setError(response.data.error);
       }
     } catch (err) {
-      // Handle login error
       if (err.response) {
-        // Server returned an error response
-        setError(err.response.data.error); // Set error message from the server
+        setError(err.response.data.error);
       } else {
-        // An unexpected error occurred
         console.error("Unexpected login error:", err);
-        setError("An unexpected error occurred"); // Set a generic error message
+        setError("An unexpected error occurred");
       }
     }
   };
-  
 
   return (
     <div>
       <h1>LOGIN</h1>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p>{error}</p>}
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
         <input
