@@ -1,8 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 export default function RegisterPage() {
+  const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,11 +15,10 @@ export default function RegisterPage() {
 
     try {
       const response = await axios.post("/api/auth/register", { name, email, password });
-      // Handle successful login response
       console.log(response.data);
+      router.push("/login"); // Redirect to the login page after successful registration
     } catch (err) {
-      // Handle login error
-      setError(err.response.data.message);
+      setError(err.response?.data?.message || "An unexpected error occurred");
     }
   };
 
@@ -26,7 +27,7 @@ export default function RegisterPage() {
       <h1>Register</h1>
       {error && <p>{error}</p>}
       <form onSubmit={handleSubmit}>
-      <label htmlFor="name">Name</label>
+        <label htmlFor="name">Name</label>
         <input
           type="text"
           name="name"
@@ -53,7 +54,7 @@ export default function RegisterPage() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Login</button>
+        <button type="submit">Register</button>
       </form>
     </div>
   );
