@@ -101,22 +101,24 @@ export const saltAndHashPassword = (password) => {
   return hashedPassword;
 };
 
-export const getUserFromDb = async (email, password) => {
-  try {
-    const sql = "SELECT * FROM user WHERE email = ?";
-    const [user] = await conn.query(sql, [email]);
-    if (user.length > 0) {
-      if (bcrypt.compareSync(password, user[0].pass)) {
-        return user[0];
-      } else {
-        return null;
-      }
-    } else {
-      return false;
+export async function getUserFromDb(email, password) {
+  const [rows] = await conn.query('SELECT * FROM user WHERE email = ?', [email]);
+
+  if (rows.length > 0) {
+    const user = rows[0];
+    const isValidPassword = await bcrypt.compare(password, user.pass);
+
+    if (isValidPassword) {
+      return { id: user.id, rol: user.rol };
     }
-  } catch (error) {
-    throw new Error("Error getting user from the database: " + error.message);
   }
+
+  return null;
+}
+
+export async function getUsers() {
+  const [rows] = await conn.query('SELECT id, name, email, rol FROM user');
+  return rows;
 }
 
 export const postUser = async (name, email, password) => {
@@ -127,16 +129,6 @@ export const postUser = async (name, email, password) => {
     return true;
   } catch (error) {
     console.log(error, "error posting user");
-  }
-}
-
-export const getUsers = async () => {
-  try {
-    const sql = "SELECT email, name FROM user";
-    const [users] = await conn.query(sql);
-    return users;
-  } catch (error) {
-    console.log(error, "error getting users");
   }
 }
 

@@ -17,7 +17,12 @@ export default function LoginPage() {
       const response = await axios.post("/api/auth/login", { email, password });
       console.log("Response from server:", response.data);
       if (response.data.message) {
-        router.push("/dashboard");
+        const role = response.data.role;
+        if (role === 1) {
+          router.push("/dashboard/admin");
+        } else {
+          router.push("/dashboard");
+        }
       } else {
         setError(response.data.error);
       }
