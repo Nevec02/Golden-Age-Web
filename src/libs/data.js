@@ -109,7 +109,7 @@ export async function getUserFromDb(email, password) {
     const isValidPassword = await bcrypt.compare(password, user.pass);
 
     if (isValidPassword) {
-      return { id: user.id, role: user.rol };
+      return { id: user.id, rol: user.rol };
     }
   }
 
