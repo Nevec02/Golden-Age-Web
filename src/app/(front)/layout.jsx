@@ -1,7 +1,7 @@
 import "@/app/globals.css";
 import Providers from "@/app/providers";
-import NavBar from "@/components/NavBar";
-import Footer from "@/components/Footer";
+import NavBar from "@/components/front/globals/NavBar";
+import Footer from "@/components/front/globals/Footer";
 
 export const metadata = {
   title: "Index Page",

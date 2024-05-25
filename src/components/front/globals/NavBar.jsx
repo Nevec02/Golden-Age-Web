@@ -12,12 +12,10 @@ import {
   Button,
 } from "@nextui-org/react";
 import Image from "next/image";
-import logo from "../../public/icons/GALogo.png";
+import logo from "../../../../public/icons/GALogo.png";
 
-export default function App() {
+export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
-  const menuItems = ["Portfolio", "About Us", "Contact Us"];
 
   return (
     <Navbar onMenuOpenChange={setIsMenuOpen}>
@@ -27,13 +25,15 @@ export default function App() {
           className="sm:hidden"
         />
         <NavbarBrand>
-          <Image src={logo} alt="Golden Age Logo" width={150} height={150} />
+          <Link href="/">
+            <Image src={logo} alt="Golden Age Logo" width={150} height={150} />
+          </Link>
         </NavbarBrand>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
-          <Link color="primary" href="porfolio">
+          <Link color="primary" href="/portfolio">
             Portfolio
           </Link>
         </NavbarItem>
@@ -53,7 +53,7 @@ export default function App() {
           <Link href="/login">Login</Link>
         </NavbarItem>
         <NavbarItem>
-          <Button as={Link} color="primary" href="#" variant="flat">
+          <Button as={Link} color="primary" href="/register" variant="flat">
             Sign Up
           </Button>
         </NavbarItem>

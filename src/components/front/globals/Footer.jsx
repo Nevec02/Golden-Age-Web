@@ -1,5 +1,5 @@
 import Image from "next/image";
-import logo from "../../public/icons/GALogo.png";
+import logo from "../../../../public/icons/GALogo.png";
 export default function Footer() {
   return (
     <footer className="bg-black text-white py-10">
