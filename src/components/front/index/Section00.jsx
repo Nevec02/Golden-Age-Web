@@ -12,7 +12,7 @@ export default function Section() {
               alt="Serverless Computing"
               className="aspect-video w-full overflow-hidden rounded-xl object-cover"
               height={365}
-              src="/placeholder.svg"
+              src="/img/cat.jpg"
               width={650}
             />
           </div>
@@ -67,7 +67,7 @@ export default function Section() {
               alt="Accelerate Workflow"
               className="aspect-video w-full overflow-hidden rounded-xl object-cover"
               height={365}
-              src="/placeholder.svg"
+              src="/img/cat.jpg"
               width={650}
             />
           </div>
@@ -81,7 +81,7 @@ export default function Section() {
               alt="Scale Effortlessly"
               className="aspect-video w-full overflow-hidden rounded-xl object-cover"
               height={365}
-              src="/placeholder.svg"
+              src="/img/cat.jpg"
               width={650}
             />
           </div>
@@ -135,7 +135,7 @@ export default function Section() {
               alt="Enhance Security"
               className="aspect-video w-full overflow-hidden rounded-xl object-cover"
               height={365}
-              src="/placeholder.svg"
+              src="/img/cat.jpg"
               width={650}
             />
           </div>

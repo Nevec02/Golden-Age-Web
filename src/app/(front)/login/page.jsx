@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
+import {Chip} from "@nextui-org/react";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -39,21 +39,12 @@ export default function LoginPage() {
 
   return (
     <div className="bg-black text-primary min-h-screen flex flex-col items-center justify-center">
-      <header className="absolute top-4 left-4 flex items-center">
-        <Image
-          src="/icons/Logo.png"
-          alt="Golden Age Logo"
-          width={40}
-          height={40}
-        />
-        <h1 className="text-primary font-bold text-xl ml-2">GOLDENAge</h1>
-      </header>
       <form onSubmit={handleSubmit} className="w-full max-w-md text-center">
         <h2 className="text-2xl font-bold">Login</h2>
         <p className="text-gray-500 mb-8">
           Enter your email to login to your account
         </p>
-        {error && <p className="text-red-500">{error}</p>}
+        {error && <Chip color="danger" className="mb-4">{error}</Chip>}
         <div className="mb-4">
           <input
             type="email"

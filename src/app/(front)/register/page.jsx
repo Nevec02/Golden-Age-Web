@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
+import {Chip} from "@nextui-org/react";
 import Link from "next/link";
 
 export default function RegisterPage() {
@@ -35,7 +35,7 @@ export default function RegisterPage() {
         <p className="text-gray-500 mb-8">
           Enter your email to sign up for this app
         </p>
-        {error && <p className="text-red-500">{error}</p>}
+        {error && <Chip color="danger" className="mb-4">{error}</Chip>}
         <div className="mb-4">
           <input
             type="text"
