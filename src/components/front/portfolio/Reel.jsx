@@ -1,28 +1,30 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import cat from "../../../../public/img/cat.jpg";
+
 
 const projects = [
   {
     title: "Project title",
     description: "Description of your first project",
-    imageUrl: cat,
+    imageUrl: "/img/cat.jpg",
+
   },
   {
     title: "Project title",
     description: "Description of your second work",
-    imageUrl: cat,
+    imageUrl: "/img/cat.jpg",
+
   },
   {
     title: "Project title",
     description: "Description of your third creation",
-    imageUrl: cat,
+    imageUrl: "/img/cat.jpg",
   },
   {
     title: "Project title",
     description: "Description of your fourth endeavor",
-    imageUrl: cat,
+    imageUrl: "/img/cat.jpg",
   },
 ];
 

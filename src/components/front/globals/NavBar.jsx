@@ -12,7 +12,7 @@ import {
   Button,
 } from "@nextui-org/react";
 import Image from "next/image";
-import logo from "../../../../public/icons/GALogo.png";
+
 
 export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -26,7 +26,7 @@ export default function NavBar() {
         />
         <NavbarBrand>
           <Link href="/">
-            <Image src={logo} alt="Golden Age Logo" width={150} height={150} />
+            <Image src="/icons/GALogo.png" alt="Golden Age Logo" width="150" height="150" />
           </Link>
         </NavbarBrand>
       </NavbarContent>
