@@ -65,7 +65,7 @@ export default function DashMain() {
                     {order.details.map((detail) => (
                       <div key={detail.id}>
                         <p>{detail.service_name}</p>
-                        <p>Price: ${detail.price}</p>
+                        <p>Price: ${detail.service_price}</p>
                       </div>
                     ))}
                   </div>

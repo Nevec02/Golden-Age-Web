@@ -170,7 +170,7 @@ export const getOrdersByUserId = async (userId) => {
 export const getOrderDetails = async (orderId) => {
   try {
     const sql = `
-      SELECT od.*, s.name AS service_name
+      SELECT od.*, s.name AS service_name, s.price AS service_price
       FROM order_detail od
       JOIN service s ON od.service_id = s.id
       WHERE od.order_id = ?
