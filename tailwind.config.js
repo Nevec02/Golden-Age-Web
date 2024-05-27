@@ -10,10 +10,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#E0AA23', // Example custom color
-        secondary: '#33c4ff', // Example custom color
-        accent: '#ff33a6', // Example custom color
-        // Add more custom colors as needed
+        primary: '#E0AA23', // Dorado golden age
+        secondary: '#1F1F1F', // Gris
+        accent: '#ff33a6', // 
       },
     },
   },
