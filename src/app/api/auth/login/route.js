@@ -21,8 +21,3 @@ export async function POST(request) {
   }
 }
 
-
-export async function GET() {
-  const users = await getUsers();
-  return NextResponse.json({ users }, { status: 200 });
-}

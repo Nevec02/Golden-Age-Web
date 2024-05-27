@@ -132,3 +132,54 @@ export const postUser = async (name, email, password) => {
   }
 }
 
+// region 3.ORDERS
+
+
+export const getOrders = async () => {
+  try {
+    const sql = "SELECT * FROM service_order";
+    const [orders] = await conn.query(sql);
+    return orders;
+  } catch (error) {
+    console.log(error, "error getting orders");
+  }
+};
+
+/**
+ * Retrieves all orders for a specific user from the database.
+ *
+ * @param {number} userId - The ID of the user whose orders are to be retrieved.
+ * @return {Array} Orders data from the database.
+ */
+export const getOrdersByUserId = async (userId) => {
+  try {
+    const sql = "SELECT * FROM service_order WHERE user_id = ?";
+    const [orders] = await conn.query(sql, [userId]);
+    return orders;
+  } catch (error) {
+    console.log(error, "error getting orders");
+  }
+};
+
+/**
+ * Retrieves the details of a specific order from the database.
+ *
+ * @param {number} orderId - The ID of the order whose details are to be retrieved.
+ * @return {Array} Order details data from the database.
+ */
+export const getOrderDetails = async (orderId) => {
+  try {
+    const sql = `
+      SELECT od.*, s.name AS service_name
+      FROM order_detail od
+      JOIN service s ON od.service_id = s.id
+      WHERE od.order_id = ?
+    `;
+    const [orderDetails] = await conn.query(sql, [orderId]);
+    return orderDetails;
+  } catch (error) {
+    console.log(error, "error getting order details");
+  }
+};
+
+
