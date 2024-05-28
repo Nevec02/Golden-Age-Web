@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getServices, postService, deleteServices } from "@/libs/data";
+import { getServices, postService } from "@/libs/data";
 
 // TODO: Add error handling and check wrong data type
 
