@@ -8,12 +8,11 @@ export default function DashMain() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const userId = 1; // Replace with logic to get the current user's ID
 
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await axios.get(`/api/orders/${userId}`);
+        const response = await axios.get('/api/orders');
         if (Array.isArray(response.data)) {
           setOrders(response.data);
         } else {
@@ -27,7 +26,7 @@ export default function DashMain() {
     };
 
     fetchOrders();
-  }, [userId]);
+  }, []);
 
   if (loading) {
     return <div>Loading...</div>;
