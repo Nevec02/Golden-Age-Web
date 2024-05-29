@@ -13,7 +13,14 @@ export default function ServicesPage() {
     const fetchServices = async () => {
       try {
         const response = await axios.get('/api/services');
-        setServices(response.data);
+        // Construye la URL completa para cada imagen y filtra servicios activos
+        const servicesWithFullImageUrls = response.data
+          .filter(service => service.active) // Filtra solo los servicios activos
+          .map(service => ({
+            ...service,
+            image: `/img/${service.image}`,
+          }));
+        setServices(servicesWithFullImageUrls);
       } catch (err) {
         setError(err.response?.data?.message || "An unexpected error occurred");
       } finally {
@@ -25,13 +32,27 @@ export default function ServicesPage() {
   }, []);
 
   const addToCart = (service) => {
-    setCart((prevCart) => [...prevCart, service]);
+    setCart((prevCart) => {
+      if (prevCart.find(item => item.id === service.id)) {
+        return prevCart; // Service already in cart
+      }
+      return [...prevCart, service];
+    });
   };
 
-  const handlePurchase = () => {
-    alert(`Purchasing ${cart.length} services`);
-    // Aquí puedes agregar la lógica para manejar la compra
-    setCart([]); // Vaciar la cesta después de la compra
+  const removeFromCart = (serviceId) => {
+    setCart((prevCart) => prevCart.filter(item => item.id !== serviceId));
+  };
+
+  const handlePurchase = async () => {
+    try {
+      const response = await axios.post('/api/orders', { items: cart });
+      alert(`Order successful: ${response.data.orderId}`);
+      setCart([]); // Clear cart after purchase
+    } catch (error) {
+      console.error('Purchase error:', error);
+      alert('There was an error processing your order. Please try again.');
+    }
   };
 
   if (loading) {
@@ -46,20 +67,26 @@ export default function ServicesPage() {
     <div>
       <div className="gap-2 grid grid-cols-2 sm:grid-cols-4">
         {services.map((service, index) => (
-          <Card className="bg-secondary text-primary border-black border hover:border-primary" shadow="sm" key={index} isPressable onPress={() => addToCart(service)}>
+          <Card
+            className="bg-secondary text-primary border-black border hover:border-primary"
+            shadow="sm"
+            key={index}
+            isPressable
+            onPress={() => addToCart(service)}
+          >
             <CardBody className="overflow-visible p-0">
               <Image
                 shadow="sm"
                 radius="lg"
                 width="100%"
                 alt={service.name}
-                className="w-full object-cover h-[140px]"
-                src="/img/cat.jpg"
+                className="w-full object-cover h-[200px]"
+                src={service.image}
               />
             </CardBody>
             <CardFooter className="text-small justify-between">
               <b>{service.name}</b>
-              <p className=" text-green-400">${service.price}</p>
+              <p className="text-green-400">${service.price}</p>
             </CardFooter>
           </Card>
         ))}
@@ -69,15 +96,20 @@ export default function ServicesPage() {
         {cart.length === 0 ? (
           <p>No services in cart</p>
         ) : (
-          <div>
-            <ul>
+          <div className="border border-solid border-primary w-1/4 p-8">
+            <ul className="border-b border-primary">
               {cart.map((item, index) => (
-                <li key={index}>
-                  {item.name} - ${item.price}
+                <li key={index} className="flex justify-between items-center mb-2">
+                  <span>
+                    <Button className="mr-2" auto flat color="danger" onPress={() => removeFromCart(item.id)}>
+                      Remove
+                    </Button>
+                    {item.name} - ${item.price}
+                  </span>
                 </li>
               ))}
             </ul>
-            <Button onPress={handlePurchase}>Purchase</Button>
+            <Button className="mt-4" color="success" onPress={handlePurchase}>Purchase</Button>
           </div>
         )}
       </div>
