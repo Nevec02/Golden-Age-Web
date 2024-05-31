@@ -31,11 +31,6 @@ export default function DashboardLayout({ children }) {
                     Services
                   </Link>
                 </li>
-                <li>
-                  <Link href="/dashboard/files" className="block px-4 py-2 rounded-md hover:bg-primary hover:text-black">
-                    Files
-                  </Link>
-                </li>
               </ul>
             </nav>
             <div className="p-4 border-t border-primary">

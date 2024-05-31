@@ -13,7 +13,6 @@ export default function ServicesPage() {
     const fetchServices = async () => {
       try {
         const response = await axios.get('/api/services');
-        // Construye la URL completa para cada imagen y filtra servicios activos
         const servicesWithFullImageUrls = response.data
           .filter(service => service.active) // Filtra solo los servicios activos
           .map(service => ({
@@ -48,15 +47,15 @@ export default function ServicesPage() {
     try {
       const orderDetails = cart.map(item => ({
         service_id: item.id,
-        quantity: 1,  // Assuming a default quantity of 1
+        quantity: 1, 
         price: item.price
       }));
   
       const total_price = cart.reduce((total, item) => total + item.price, 0);
   
       const response = await axios.post('/api/orders', { total_price, details: orderDetails });
-      alert(`Order successful: ${response.data.orderId}`);
-      setCart([]); // Clear cart after purchase
+      alert(`Order successful`);
+      setCart([]); 
     } catch (error) {
       console.error('Purchase error:', error);
       alert('There was an error processing your order. Please try again.');
@@ -103,7 +102,7 @@ export default function ServicesPage() {
       <div className="mt-4">
         <h2 className="text-xl font-bold mb-4">Cart</h2>
         {cart.length === 0 ? (
-          <p>No services in cart</p>
+          <p>Carrito vacio</p>
         ) : (
           <div className="border border-solid border-primary w-1/4 p-8">
             <ul className="border-b border-primary">
@@ -111,7 +110,7 @@ export default function ServicesPage() {
                 <li key={index} className="flex justify-between items-center mb-2">
                   <span>
                     <Button className="mr-2" auto flat color="danger" onPress={() => removeFromCart(item.id)}>
-                      Remove
+                      Eliminar
                     </Button>
                     {item.name} - ${item.price}
                   </span>
