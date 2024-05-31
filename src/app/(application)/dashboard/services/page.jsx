@@ -62,7 +62,7 @@ export default function ServicesPage() {
       alert('There was an error processing your order. Please try again.');
     }
   };
-  
+    
 
   if (loading) {
     return <div>Loading...</div>;
