@@ -182,4 +182,14 @@ export const getOrderDetails = async (orderId) => {
   }
 };
 
+export const createOrder = async (data) => {
+  try {
+    const sql = "INSERT INTO service_order SET ?";
+    const [order] = await conn.query(sql, data);
+    return order;
+  } catch (error) {
+    console.log(error, "error creating order");
+  }
+};
+
 
