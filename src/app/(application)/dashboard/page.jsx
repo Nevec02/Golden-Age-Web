@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Link from "next/link";
 import { Button } from "@nextui-org/react";
 
 export default function DashMain() {
