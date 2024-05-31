@@ -184,12 +184,39 @@ export const getOrderDetails = async (orderId) => {
 
 export const createOrder = async (data) => {
   try {
-    const sql = "INSERT INTO service_order SET ?";
-    const [order] = await conn.query(sql, data);
-    return order;
+    const { user_id, total_price, details } = data;
+
+    if (!Array.isArray(details)) {
+      throw new Error("Order details must be an array");
+    }
+
+    // Begin a transaction
+    await conn.beginTransaction();
+    console.log('Total Price:', total_price, typeof total_price); 
+    // Insert into service_order
+    const orderSql = "INSERT INTO service_order (user_id, total_price) VALUES (?, ?)";
+    const [orderResult] = await conn.query(orderSql, [user_id, total_price]);
+    const orderId = orderResult.insertId;
+
+    // Insert into order_detail
+    const detailSql = `
+      INSERT INTO order_detail (order_id, service_id, quantity, price)
+      VALUES ?
+    `;
+    const detailValues = details.map(detail => [orderId, detail.service_id, detail.quantity, detail.price]);
+    await conn.query(detailSql, [detailValues]);
+
+    // Commit the transaction
+    await conn.commit();
+
+    return { orderId, user_id, total_price, details };
   } catch (error) {
+    // Rollback the transaction in case of error
+    await conn.rollback();
     console.log(error, "error creating order");
+    throw error; // It is good practice to rethrow the error after logging it
   }
 };
+
 
 
