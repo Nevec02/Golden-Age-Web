@@ -28,7 +28,17 @@ export default function DashboardLayout({ children }) {
                 </li>
                 <li>
                   <Link href="/admin-dashboard/services" className="block px-4 py-2 rounded-md hover:bg-primary hover:text-black">
-                    Services
+                    Gestión de Servicios
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/admin-dashboard/users" className="block px-4 py-2 rounded-md hover:bg-primary hover:text-black">
+                    Gestión de usuarios
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/admin-dashboard/orders" className="block px-4 py-2 rounded-md hover:bg-primary hover:text-black">
+                    Pedidos
                   </Link>
                 </li>
               </ul>

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getServices, postService } from "@/libs/data";
+import { getServices } from "@/libs/data";
 
 // TODO: Add error handling and check wrong data type
 
@@ -24,31 +24,4 @@ export async function GET() {
   }
 }
 
-/**
- * Asynchronously handles a POST request.
- *
- * @param {Object} request - The request object.
- * @return {Promise<Object>} The JSON response object.
- */
-export async function POST(request) {
-  try {
-    const data = await request.json();
-    const result = await postService(data);
-    if (!result) {
-      return NextResponse.json(
-        { error: "Service not created", message: "Service not created" },
-        { status: 404 }
-      );
-    } else {
-      return NextResponse.json(
-        { message: "Service created successfully" },
-        { status: 200 }
-      );
-    }
-  } catch (error) {
-    return NextResponse.json(
-      { error: error.message, message: "Services POST error" },
-      { status: 500 }
-    );
-  }
-}
+
