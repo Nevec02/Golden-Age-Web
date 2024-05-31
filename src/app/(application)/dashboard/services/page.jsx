@@ -46,7 +46,15 @@ export default function ServicesPage() {
 
   const handlePurchase = async () => {
     try {
-      const response = await axios.post('/api/orders', { items: cart });
+      const orderDetails = cart.map(item => ({
+        service_id: item.id,
+        quantity: 1,  // Assuming a default quantity of 1
+        price: item.price
+      }));
+  
+      const total_price = cart.reduce((total, item) => total + item.price, 0);
+  
+      const response = await axios.post('/api/orders', { total_price, details: orderDetails });
       alert(`Order successful: ${response.data.orderId}`);
       setCart([]); // Clear cart after purchase
     } catch (error) {
@@ -54,6 +62,7 @@ export default function ServicesPage() {
       alert('There was an error processing your order. Please try again.');
     }
   };
+  
 
   if (loading) {
     return <div>Loading...</div>;
