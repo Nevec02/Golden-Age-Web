@@ -22,12 +22,12 @@ export default function DashboardLayout({ children }) {
             <nav className="flex-1 p-4">
               <ul className="space-y-2">
                 <li>
-                  <Link href="/dashboard" className="block px-4 py-2 rounded-md hover:bg-primary hover:text-black">
+                  <Link href="/admin-dashboard" className="block px-4 py-2 rounded-md hover:bg-primary hover:text-black">
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link href="/dashboard/services" className="block px-4 py-2 rounded-md hover:bg-primary hover:text-black">
+                  <Link href="/admin-dashboard/services" className="block px-4 py-2 rounded-md hover:bg-primary hover:text-black">
                     Services
                   </Link>
                 </li>

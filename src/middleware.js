@@ -21,19 +21,23 @@ export async function middleware(request) {
   try {
     const { payload } = await jwtVerify(token, JWT_SECRET);
 
-    // Store user info in the request object for further use
-    request.user = {
+    const user = {
       id: payload.userId,
       role: payload.role,
     };
-
+    
     // Role-based access control
-    if (request.nextUrl.pathname.startsWith('/dashboard')) {
-      if (request.nextUrl.pathname.startsWith('/dashboard/admin') && payload.role !== 1) {
-        return NextResponse.redirect(new URL('/dashboard', request.url));
-      }
+    const url = request.nextUrl;
+
+    if (url.pathname.startsWith('/admin-dashboard') && user.role !== 1) {
+      return NextResponse.redirect(new URL('/dashboard', request.url));
     }
 
+    if (url.pathname.startsWith('/dashboard') && user.role === 1 && !url.pathname.startsWith('/admin-dashboard')) {
+      return NextResponse.redirect(new URL('/admin-dashboard', request.url));
+    }
+    console.log('User role:', user.role);
+    console.log('Requested URL:', url.pathname);
     return NextResponse.next();
   } catch (err) {
     console.error('JWT verification failed:', err);
@@ -41,6 +45,8 @@ export async function middleware(request) {
   }
 }
 
+
 export const config = {
-  matcher: ['/dashboard/:path*', '/dashboard/admin/:path*'],
+  matcher: ['/dashboard/:path*', '/admin-dashboard/:path*'],
 };
+
