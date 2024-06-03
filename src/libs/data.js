@@ -132,6 +132,28 @@ export const postUser = async (name, email, password) => {
   }
 }
 
+export const updateRole = async (id, role) => {
+  try {
+    const sql = "UPDATE user SET rol = ? WHERE id = ?";
+    await conn.query(sql, [role, id]);
+  } catch (error) {
+    console.log(error, "error updating role");
+  }
+}
+
+export const deleteUser = async (id) => {
+  try {
+    const sql = "DELETE FROM user WHERE id = ?";
+    await conn.query(sql, [id]);
+  } catch (error) {
+    if (error.errno === 1451) {
+      console.log('Cannot delete user with existing orders', error);
+      throw new Error('Cannot delete user with existing orders');
+    }
+    console.log('Error deleting user', error);
+    throw error;
+  }
+}
 // region 3.ORDERS
 
 

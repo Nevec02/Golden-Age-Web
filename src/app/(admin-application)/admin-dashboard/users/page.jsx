@@ -51,6 +51,30 @@ export default function Users() {
     fetchData();
   }, []);
 
+  const deleteUser = useCallback(async (userId) => {
+    try {
+      await axios.delete(`/api/admin/users/${userId}`);
+      setUsers(users.filter(user => user.id !== userId));
+    } catch (err) {
+      console.error('Failed to delete user: it has existing orders', err);
+      if (err.response && err.response.data && err.response.data.error === 'Cannot delete user with existing orders') {
+        alert('Cannot delete user with existing orders.');
+      } else {
+        alert('Failed to delete user it has existing orders.');
+      }
+    }
+  }, [users, setUsers]);
+
+  const changeUserRole = useCallback(async (userId, newRole) => {
+    try {
+      await axios.put(`/api/Admin/users/${userId}`, { role: newRole });
+      setUsers(users.map(user => user.id === userId ? { ...user, rol: newRole } : user));
+    } catch (err) {
+      console.error('Failed to change user role:', err);
+      alert('Failed to change user role.');
+    }
+  }, [users, setUsers]);
+
   const filteredItems = useMemo(() => {
     if (filterValue) {
       return users.filter(user =>
@@ -76,27 +100,26 @@ export default function Users() {
         return <User name={user.name} description={user.email} />;
       case "role":
         return (
-          <Chip color={statusColorMap[user.rol === 1 ? 'admin' : 'user']} size="sm" variant="flat">
-            {user.rol === 1 ? 'Admin' : 'User'}
-          </Chip>
+          <Dropdown>
+            <DropdownTrigger className="cursor-pointer">
+              <Chip color={statusColorMap[user.rol === 1 ? 'admin' : 'user']} size="sm" variant="flat">
+                {user.rol === 1 ? 'Admin' : 'User'}
+              </Chip>
+            </DropdownTrigger>
+            <DropdownMenu>
+              <DropdownItem key="admin" onClick={() => changeUserRole(user.id, 1)}>Admin</DropdownItem>
+              <DropdownItem key="user" onClick={() => changeUserRole(user.id, 2)}>User</DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
         );
       case "actions":
         return (
-          <Dropdown>
-            <DropdownTrigger>
-              <Button isIconOnly size="sm" variant="light">
-                <VerticalDotsIcon className="text-default-300" />
-              </Button>
-            </DropdownTrigger>
-            <DropdownMenu>
-              <DropdownItem>Delete</DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
+          <Button onClick={() => deleteUser(user.id)} color="danger" size="sm">Delete</Button>
         );
       default:
         return cellValue;
     }
-  }, []);
+  }, [changeUserRole, deleteUser]);
 
   const onSearchChange = useCallback((value) => {
     setFilterValue(value);

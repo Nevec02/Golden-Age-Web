@@ -96,21 +96,6 @@ export default function Orders() {
             {cellValue}
           </Chip>
         );
-      case "actions":
-        return (
-          <Dropdown>
-            <DropdownTrigger>
-              <Button isIconOnly size="sm" variant="light">
-                <VerticalDotsIcon className="text-default-300" />
-              </Button>
-            </DropdownTrigger>
-            <DropdownMenu>
-              <DropdownItem>View</DropdownItem>
-              <DropdownItem>Edit</DropdownItem>
-              <DropdownItem>Delete</DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
-        );
       default:
         return cellValue;
     }
@@ -193,7 +178,6 @@ export default function Orders() {
           <TableColumn className="bg-secondary text-primary font-bold" key="user_name">User Name</TableColumn>
           <TableColumn className="bg-secondary text-primary font-bold" key="total_price">Total Price</TableColumn>
           <TableColumn className="bg-secondary text-primary font-bold" key="created_at">Created At</TableColumn>
-          <TableColumn className="bg-secondary text-primary font-bold" key="actions">Actions</TableColumn>
         </TableHeader>
         <TableBody items={items}>
           {(item) => (
