@@ -20,7 +20,6 @@ import {
   User,
 } from "@nextui-org/react";
 import { SearchIcon } from "@/components/back/SearchIcon";
-import { VerticalDotsIcon } from "@/components/back/VerticalDotsIcon";
 
 const statusColorMap = {
   admin: "success",

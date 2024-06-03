@@ -20,7 +20,8 @@ import {
 } from "@nextui-org/react";
 import { SearchIcon } from "@/components/back/SearchIcon";
 import { PlusIcon } from "@/components/back/PlusIcon";
-import { VerticalDotsIcon } from "@/components/back/VerticalDotsIcon";
+import { EditIcon } from "@/components/back/EditIcon";
+import Link from "next/link";
 
 const statusColorMap = {
   Active: "success",
@@ -51,6 +52,19 @@ export default function Services() {
     fetchData();
   }, []);
 
+  const toggleServiceStatus = useCallback(async (serviceId, currentStatus) => {
+    try {
+      const newStatus = !currentStatus;
+      await axios.patch(`/api/Admin/services/${serviceId}`, { active: newStatus });
+      setServices(services => services.map(service => 
+        service.id === serviceId ? { ...service, active: newStatus } : service
+      ));
+    } catch (err) {
+      console.error('Failed to change service status:', err);
+      alert('Failed to change service status.');
+    }
+  }, []);
+
   const filteredItems = useMemo(() => {
     if (filterValue) {
       return services.filter(service =>
@@ -74,29 +88,31 @@ export default function Services() {
     switch (columnKey) {
       case "status":
         return (
-          <Chip color={statusColorMap[service.active ? 'Active' : 'Inactive']} size="sm" variant="flat">
-            {service.active ? 'Active' : 'Inactive'}
-          </Chip>
+          <Dropdown>
+            <DropdownTrigger className="cursor-pointer hover:opacity-80">
+              <Chip color={statusColorMap[service.active ? 'Active' : 'Inactive']} size="sm" variant="flat">
+                {service.active ? 'Active' : 'Inactive'}
+              </Chip>
+            </DropdownTrigger>
+            <DropdownMenu>
+              <DropdownItem key="toggle" onClick={() => toggleServiceStatus(service.id, service.active)}>
+                {service.active ? 'Deactivate' : 'Activate'}
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
         );
       case "actions":
         return (
-          <Dropdown>
-            <DropdownTrigger>
-              <Button isIconOnly size="sm" variant="light">
-                <VerticalDotsIcon className="text-default-300" />
-              </Button>
-            </DropdownTrigger>
-            <DropdownMenu>
-              <DropdownItem>View</DropdownItem>
-              <DropdownItem>Edit</DropdownItem>
-              <DropdownItem>Delete</DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
+          <Link href={`/admin-dashboard/services/${service.id}`} passHref legacyBehavior>
+            <Button isIconOnly size="sm" variant="light">
+              <EditIcon className="text-default-300" />
+            </Button>
+          </Link>
         );
       default:
         return cellValue;
     }
-  }, []);
+  }, [toggleServiceStatus]);
 
   const onSearchChange = useCallback((value) => {
     setFilterValue(value);
