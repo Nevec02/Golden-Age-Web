@@ -17,7 +17,7 @@ export default function DashboardLayout({ children }) {
         <div className="grid min-h-screen lg:grid-cols-[250px_1fr]">
           <aside className="bg-black border-r border-primary text-yellow-500 flex flex-col">
             <div className="flex items-center justify-center h-16">
-              <Image src="/icons/GALogo.png" alt="Golden Age Logo" width={150} height={150} />
+              <Image src="/icons/GALogo.png" alt="Golden Age Logo" priority width={150} height={150} />
             </div>
             <nav className="flex-1 p-4">
               <ul className="space-y-2">

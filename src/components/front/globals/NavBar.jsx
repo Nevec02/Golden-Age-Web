@@ -26,7 +26,7 @@ export default function NavBar() {
         />
         <NavbarBrand>
           <Link href="/">
-            <Image src="/icons/GALogo.png" alt="Golden Age Logo" width="150" height="150" />
+            <Image src="/icons/GALogo.png" priority alt="Golden Age Logo" width="150" height="150" />
           </Link>
         </NavbarBrand>
       </NavbarContent>
