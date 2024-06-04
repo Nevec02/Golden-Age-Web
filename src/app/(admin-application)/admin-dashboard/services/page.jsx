@@ -145,9 +145,11 @@ export default function Services() {
             onClear={() => setFilterValue("")}
             onValueChange={onSearchChange}
           />
+          <Link href="/admin-dashboard/services/create">
           <Button color="primary" endContent={<PlusIcon />}>
             Add New
           </Button>
+          </Link>
         </div>
         <div className="flex justify-between items-center">
           <span className="text-default-400 text-small">Total {services.length} services</span>

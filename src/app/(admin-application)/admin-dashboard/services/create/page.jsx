@@ -1,11 +1,10 @@
 "use client";
 
-import { useParams, useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
 import axios from 'axios';
 
-export default function EditService() {
-  const { id } = useParams();
+export default function CreateService() {
   const router = useRouter();
   const [service, setService] = useState({
     name: '',
@@ -13,28 +12,9 @@ export default function EditService() {
     price: 0,
     active: false,
   });
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
-
-  useEffect(() => {
-    const fetchService = async () => {
-      try {
-        const response = await axios.get(`/api/Admin/services/${id}`);
-        if (response.data && response.data.data) {
-          setService(response.data.data);
-        }
-      } catch (err) {
-        setError(err.response?.data?.message || 'An unexpected error occurred');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    if (id) {
-      fetchService();
-    }
-  }, [id]);
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -47,31 +27,26 @@ export default function EditService() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`/api/Admin/services/${id}`, service);
-      setSuccess('Service updated successfully');
+      setLoading(true);
+      await axios.post('/api/Admin/services', service);
+      setSuccess('Service created successfully');
       setError(null);
       setTimeout(() => {
         router.push('/admin-dashboard/services');
       }, 2000);
     } catch (err) {
-      console.error('Failed to update service:', err);
-      setError('Failed to update service');
+      console.error('Failed to create service:', err);
+      setError('Failed to create service');
       setSuccess(null);
+    } finally {
+      setLoading(false);
     }
   };
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error && !service) {
-    return <div>Error: {error}</div>;
-  }
-
   return (
     <div className=" text-primary min-h-screen flex flex-col items-center justify-center py-12">
-      <h2 className="text-4xl font-bold mb-2">Edit Service</h2>
-      <p className="text-gray-500 mb-8">Modify the details of the service below.</p>
+      <h2 className="text-4xl font-bold mb-2">Create New Service</h2>
+      <p className="text-gray-500 mb-8">Enter the details for the new service below.</p>
       <form onSubmit={handleSubmit} className="w-full max-w-lg">
         {error && <p className="text-red-500 mb-4">{error}</p>}
         {success && <p className="text-green-500 mb-4">{success}</p>}
@@ -121,8 +96,9 @@ export default function EditService() {
         <button
           type="submit"
           className="w-full py-2 rounded-md bg-primary text-black font-bold"
+          disabled={loading}
         >
-          Update Service
+          {loading ? 'Creating...' : 'Create Service'}
         </button>
       </form>
     </div>

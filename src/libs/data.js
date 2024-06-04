@@ -66,14 +66,18 @@ export const postService = async (data) => {
  */
 // region PATCH
 export const updateService = async (data, id) => {
-  try {
-    const sql = "UPDATE service SET ? WHERE id = ?";
-    const sql2 = "UPDATE service SET updated_at = NOW() WHERE id = ?";
-    await conn.query(sql, [data, id]);
-    await conn.query(sql2, [id]);
-  } catch (error) {
-    console.log(error, "error updating service");
-  }
+  // Prepare the update data, exclude `created_at` to prevent overwriting
+  const { name, description, price, image, active } = data;
+  const updated_at = new Date().toISOString().slice(0, 19).replace('T', ' ');
+  
+  const updateQuery = `
+    UPDATE service
+    SET name = ?, description = ?, price = ?, image = ?, active = ?, updated_at = ?
+    WHERE id = ?
+  `;
+  
+  const [result] = await conn.query(updateQuery, [name, description, price, image, active, updated_at, id]);
+  return result;
 };
 
 /**

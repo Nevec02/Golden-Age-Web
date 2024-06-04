@@ -31,11 +31,11 @@ export default function DashMain() {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="text-center text-lg font-semibold">Loading...</div>;
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div className="text-center text-lg font-semibold">Error: {error}</div>;
   }
 
   console.log('Orders:', orders);
@@ -49,7 +49,7 @@ export default function DashMain() {
         ) : (
           <table className="w-full table-auto border border-primary">
             <thead>
-              <tr className="bg-secondary text-gray-400">
+              <tr className="bg-primary text-secondary">
                 <th className="px-4 py-3 text-center font-medium">Fecha pedido</th>
                 <th className="px-4 py-3 text-center font-medium">Total</th>
                 <th className="px-4 py-3 text-center font-medium">Detalles</th>
@@ -83,7 +83,7 @@ export default function DashMain() {
                         {order.details?.map((detail) => (
                           <div key={detail.id} className="bg-secondary p-4 rounded-lg shadow-md">
                             <h2 className="text-lg font-semibold underline">{detail.service_name}</h2>
-                            <p className="mt-2">Precio: ${detail.service_price}</p>
+                            <p className="mt-2">Precio: {detail.service_price}$</p>
                           </div>
                         ))}
                       </div>
