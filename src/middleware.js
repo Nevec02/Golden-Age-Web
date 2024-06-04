@@ -26,7 +26,6 @@ export async function middleware(request) {
       role: payload.role,
     };
     
-    // Role-based access control
     const url = request.nextUrl;
 
     if (url.pathname.startsWith('/admin-dashboard') && user.role !== 1) {
@@ -36,11 +35,8 @@ export async function middleware(request) {
     if (url.pathname.startsWith('/dashboard') && user.role === 1 && !url.pathname.startsWith('/admin-dashboard')) {
       return NextResponse.redirect(new URL('/admin-dashboard', request.url));
     }
-    console.log('User role:', user.role);
-    console.log('Requested URL:', url.pathname);
     return NextResponse.next();
   } catch (err) {
-    console.error('JWT verification failed:', err);
     return NextResponse.redirect(new URL('/', request.url));
   }
 }

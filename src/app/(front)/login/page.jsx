@@ -16,7 +16,6 @@ export default function LoginPage() {
 
     try {
       const response = await axios.post("/api/auth/login", { email, password });
-      console.log("Response from server:", response.data);
       if (response.data.message) {
         const role = response.data.role;
         if (role === 1) {
@@ -31,7 +30,6 @@ export default function LoginPage() {
       if (err.response) {
         setError(err.response.data.error);
       } else {
-        console.error("Unexpected login error:", err);
         setError("An unexpected error occurred");
       }
     }

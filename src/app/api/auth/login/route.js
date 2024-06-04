@@ -14,9 +14,6 @@ export async function POST(request) {
       role: user.rol  
     }, { status: 200 });
     response.headers.set('Set-Cookie', jwtCookie);
-    console.log('Set-Cookie:', jwtCookie);
-    console.log('rol:', user.rol)
-    console.log('id:', user.id)
     return response;
   } else {
     return NextResponse.json({ error: 'User not found' }, { status: 404 });

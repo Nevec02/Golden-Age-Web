@@ -21,7 +21,6 @@ export default function RegisterPage() {
         email,
         password,
       });
-      console.log(response.data);
       router.push("/login"); // Redirect to the login page after successful registration
     } catch (err) {
       setError(err.response?.data?.message || "An unexpected error occurred");

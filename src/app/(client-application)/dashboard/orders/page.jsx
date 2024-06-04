@@ -13,7 +13,6 @@ export default function DashMain() {
     const fetchOrders = async () => {
       try {
         const response = await axios.get('/api/orders');
-        console.log('Fetched orders response:', response);
         if (Array.isArray(response.data)) {
           setOrders(response.data);
         } else {
@@ -37,8 +36,6 @@ export default function DashMain() {
   if (error) {
     return <div className="text-center text-lg font-semibold">Error: {error}</div>;
   }
-
-  console.log('Orders:', orders);
 
   return (
     <div className="bg-secondary text-primary p-4 md:p-6 rounded-lg">
