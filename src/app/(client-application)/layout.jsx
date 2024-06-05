@@ -14,9 +14,9 @@ export default function DashboardLayout({ children }) {
   return (
     <html lang="es">
       <body className="bg-black text-primary min-h-screen">
-        <div className="grid min-h-screen lg:grid-cols-[250px_1fr]">
-          <aside className="bg-black border-r border-primary text-yellow-500 flex flex-col">
-            <div className="flex items-center justify-center h-16">
+        <div className="grid min-h-screen lg:grid-cols-[250px_1fr] grid-rows-[auto_1fr] lg:grid-rows-1">
+          <aside className="bg-black border-r border-primary text-yellow-500 flex flex-col lg:row-span-2 lg:h-screen">
+            <div className="flex items-center justify-center h-16 lg:h-auto">
               <Image src="/icons/GALogo.png" alt="Golden Age Logo" priority width={150} height={150} />
             </div>
             <nav className="flex-1 p-4">
@@ -42,7 +42,7 @@ export default function DashboardLayout({ children }) {
               <LogoutButton />
             </div>
           </aside>
-          <main className="flex flex-col flex-1">
+          <main className="flex flex-col flex-1 lg:row-start-1 lg:col-start-2">
             <Header />
             <div className="flex-1 p-6 bg-secondary text-primary">{children}</div>
           </main>

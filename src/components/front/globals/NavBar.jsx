@@ -39,12 +39,12 @@ export default function NavBar() {
         </NavbarItem>
         <NavbarItem>
           <Link color="primary" href="/about">
-            About Us
+            Sobre nosotros
           </Link>
         </NavbarItem>
         <NavbarItem>
           <Link color="primary" href="/contact">
-            Contact Us
+            Contacto
           </Link>
         </NavbarItem>
       </NavbarContent>
@@ -54,7 +54,7 @@ export default function NavBar() {
         </NavbarItem>
         <NavbarItem>
           <Button as={Link} color="primary" href="/register" variant="flat">
-            Sign Up
+            Registro
           </Button>
         </NavbarItem>
       </NavbarContent>
@@ -64,10 +64,10 @@ export default function NavBar() {
             Portfolio
           </Link>
           <Link color="primary" className="w-full" href="/about" size="lg">
-            About Us
+            Sobre nosotros
           </Link>
           <Link color="primary" className="w-full" href="/contact" size="lg">
-            Contact Us
+            Contacto
           </Link>
           <Link color="primary" className="w-full" href="/login" size="lg">
             Login
