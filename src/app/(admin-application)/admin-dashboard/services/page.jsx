@@ -134,7 +134,7 @@ export default function Services() {
 
   return (
     <div className="admin-dashboard">
-      <h1 className="text-2xl font-bold mb-6">Services</h1>
+      <h1 className="text-2xl font-bold mb-6">Servicios</h1>
       <div className="flex flex-col gap-4 mb-6">
         <div className="flex justify-between items-center gap-3">
           <Input
@@ -147,12 +147,12 @@ export default function Services() {
           />
           <Link href="/admin-dashboard/services/create">
           <Button color="primary" endContent={<PlusIcon />}>
-            Add New
+            Crear nuevo
           </Button>
           </Link>
         </div>
         <div className="flex justify-between items-center">
-          <span className="text-default-400 text-small">Total {services.length} services</span>
+          <span className="text-default-400 text-small">Total {services.length} servicios</span>
           <label className="flex items-center text-default-400 text-small">
             Rows per page:
             <select
@@ -191,12 +191,12 @@ export default function Services() {
         }}
       >
         <TableHeader>
-          <TableColumn className="bg-secondary text-primary font-bold" key="id">Service ID</TableColumn>
-          <TableColumn className="bg-secondary text-primary font-bold" key="name">Name</TableColumn>
-          <TableColumn className="bg-secondary text-primary font-bold" key="description">Description</TableColumn>
-          <TableColumn className="bg-secondary text-primary font-bold" key="price">Price</TableColumn>
-          <TableColumn className="bg-secondary text-primary font-bold" key="status">Status</TableColumn>
-          <TableColumn className="bg-secondary text-primary font-bold" key="actions">Actions</TableColumn>
+          <TableColumn className="bg-secondary text-primary font-bold" key="id">ID de Servicio</TableColumn>
+          <TableColumn className="bg-secondary text-primary font-bold" key="name">Nombre</TableColumn>
+          <TableColumn className="bg-secondary text-primary font-bold" key="description">Descripción</TableColumn>
+          <TableColumn className="bg-secondary text-primary font-bold" key="price">Precio</TableColumn>
+          <TableColumn className="bg-secondary text-primary font-bold" key="status">Estado</TableColumn>
+          <TableColumn className="bg-secondary text-primary font-bold" key="actions">Acciones</TableColumn>
         </TableHeader>
         <TableBody items={items}>
           {(item) => (

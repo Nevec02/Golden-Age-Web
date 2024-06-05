@@ -70,8 +70,8 @@ export default function EditService() {
 
   return (
     <div className=" text-primary min-h-screen flex flex-col items-center justify-center py-12">
-      <h2 className="text-4xl font-bold mb-2">Edit Service</h2>
-      <p className="text-gray-500 mb-8">Modify the details of the service below.</p>
+      <h2 className="text-4xl font-bold mb-2">Editar Servicio</h2>
+      <p className="text-gray-500 mb-8">Modifique los datos del servicio.</p>
       <form onSubmit={handleSubmit} className="w-full max-w-lg">
         {error && <p className="text-red-500 mb-4">{error}</p>}
         {success && <p className="text-green-500 mb-4">{success}</p>}
@@ -116,13 +116,13 @@ export default function EditService() {
             onChange={handleInputChange}
             className="mr-2"
           />
-          <label className="text-sm font-medium text-gray-700">Active</label>
+          <label className="text-sm font-medium text-gray-700">Activo</label>
         </div>
         <button
           type="submit"
           className="w-full py-2 rounded-md bg-primary text-black font-bold"
         >
-          Update Service
+          Actualizar servicio
         </button>
       </form>
     </div>

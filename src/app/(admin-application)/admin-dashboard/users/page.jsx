@@ -113,7 +113,7 @@ export default function Users() {
         );
       case "actions":
         return (
-          <Button onClick={() => deleteUser(user.id)} color="danger" size="sm">Delete</Button>
+          <Button onClick={() => deleteUser(user.id)} color="danger" size="sm">Borrar</Button>
         );
       default:
         return cellValue;
@@ -153,7 +153,7 @@ export default function Users() {
           />
         </div>
         <div className="flex justify-between items-center">
-          <span className="text-default-400 text-small">Total {users.length} users</span>
+          <span className="text-default-400 text-small">Total {users.length} usuarios</span>
           <label className="flex items-center text-default-400 text-small">
             Rows per page:
             <select
@@ -193,10 +193,10 @@ export default function Users() {
       >
         <TableHeader>
           <TableColumn className="bg-secondary text-primary font-bold" key="id">User ID</TableColumn>
-          <TableColumn className="bg-secondary text-primary font-bold" key="name">Name</TableColumn>
+          <TableColumn className="bg-secondary text-primary font-bold" key="name">Nombre</TableColumn>
           <TableColumn className="bg-secondary text-primary font-bold" key="email">Email</TableColumn>
-          <TableColumn className="bg-secondary text-primary font-bold" key="role">Role</TableColumn>
-          <TableColumn className="bg-secondary text-primary font-bold" key="actions">Actions</TableColumn>
+          <TableColumn className="bg-secondary text-primary font-bold" key="role">Rol</TableColumn>
+          <TableColumn className="bg-secondary text-primary font-bold" key="actions">Acciones</TableColumn>
         </TableHeader>
         <TableBody items={items}>
           {(item) => (

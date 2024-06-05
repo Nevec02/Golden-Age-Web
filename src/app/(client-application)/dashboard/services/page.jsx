@@ -3,6 +3,19 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Card, CardBody, CardFooter, Image, Button } from "@nextui-org/react";
 
+const imageList = [
+  'service1.jpg',
+  'service2.jpg',
+  'service3.jpg',
+  'service4.jpg',
+  'service5.jpg',
+  'service6.jpg',
+  'service7.jpg',
+  'service8.jpg',
+  'service9.jpg',
+  'service10.jpg'
+];
+
 export default function ServicesPage() {
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -13,13 +26,13 @@ export default function ServicesPage() {
     const fetchServices = async () => {
       try {
         const response = await axios.get('/api/services');
-        const servicesWithFullImageUrls = response.data
+        const servicesWithRandomImages = response.data
           .filter(service => service.active)
           .map(service => ({
             ...service,
-            image: `/img/${service.image}`,
+            image: `/img/services/${imageList[Math.floor(Math.random() * imageList.length)]}`,
           }));
-        setServices(servicesWithFullImageUrls);
+        setServices(servicesWithRandomImages);
       } catch (err) {
         setError(err.response?.data?.message || "An unexpected error occurred");
       } finally {
@@ -99,7 +112,7 @@ export default function ServicesPage() {
         ))}
       </div>
       <div className="mt-4">
-        <h2 className="text-xl font-bold mb-4">Cart</h2>
+        <h2 className="text-xl font-bold mb-4">Cesta de servicios</h2>
         {cart.length === 0 ? (
           <p>Carrito vacio</p>
         ) : (

@@ -7,19 +7,25 @@ export default function AboutPage() {
     <div className="bg-black text-primary min-h-screen py-12">
       <div className="container mx-auto flex flex-col lg:flex-row items-center gap-8 px-4">
         <div className="lg:w-1/2">
-          <h1 className="text-4xl font-bold mb-4">About</h1>
-          <p className="text-xl text-gray-400 mb-4">Subheading for description or instructions</p>
+          <h1 className="text-4xl font-bold mb-4">Sobre Nosotros</h1>
+          <p className="text-xl text-gray-400 mb-4">Conozca a los CEOs: Nacho y Jorge</p>
           <p className="text-gray-400 mb-4">
-            Body text for your whole article or post. We&apos;ll put in some lorem ipsum to show how a filled-out page might look like:
+            Somos Nacho y Jorge, dos CEOs con una amplia gama de capacidades en la industria audiovisual. Con años de experiencia y un profundo conocimiento del sector, nos dedicamos a ofrecer servicios de alta calidad y soluciones innovadoras a nuestros clientes.
           </p>
           <p className="text-gray-400 mb-4">
-            Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquid, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur.
+            Nacho, con un fondo en dirección cinematográfica, ha trabajado en numerosos proyectos internacionales que han recibido reconocimiento global. Jorge, un experto en tecnología audiovisual, ha liderado múltiples iniciativas tecnológicas que han revolucionado la manera en que se producen y consumen contenidos audiovisuales.
+          </p>
+          <p className="text-gray-400 mb-4">
+            Nuestra misión es proporcionar experiencias audiovisuales excepcionales que superen las expectativas. Trabajamos con las ultimas tecnologías y un equipo talentoso para asegurar que cada proyecto se realice con el máximo nivel de profesionalismo y creatividad.
+          </p>
+          <p className="text-gray-400 mb-4">
+            Desde la producción de videos corporativos hasta la cobertura de eventos en vivo, estamos comprometidos a ofrecer resultados que destaquen y ayuden a nuestros clientes a alcanzar sus objetivos. Juntos, lideramos nuestra empresa hacia nuevas alturas, siempre con la mirada puesta en la excelencia y la innovación.
           </p>
         </div>
         <div className="lg:w-1/2">
           <Image
-            src="/img/cat.jpg"
-            alt="About Image"
+            src="/img/aboutus.jpg"
+            alt="Imagen de Nosotros"
             width={600}
             height={600}
             className="w-full h-auto rounded-lg object-cover"

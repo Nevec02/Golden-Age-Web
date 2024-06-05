@@ -30,9 +30,9 @@ export default function RegisterPage() {
   return (
     <div className="bg-black text-primary min-h-screen flex flex-col items-center justify-center">
       <form onSubmit={handleSubmit} className="w-full max-w-md text-center">
-        <h2 className="text-2xl font-bold">Create an account</h2>
+        <h2 className="text-2xl font-bold">Crear una cuenta</h2>
         <p className="text-gray-500 mb-8">
-          Enter your email to sign up for this app
+          Introduzca su nombre, email y contraseña segura.
         </p>
         {error && <Chip color="danger" className="mb-4">{error}</Chip>}
         <div className="mb-4">
@@ -69,14 +69,14 @@ export default function RegisterPage() {
           type="submit"
           className="w-full py-2 mb-4 rounded-md bg-primary text-black font-bold"
         >
-          Sign up with email
+          Crear cuenta
         </button>
       </form>
       <Link
         href={"/login"}
         className="inline-flex h-10 items-center justify-center rounded-md border border-primary px-8 text-sm font-medium text-primary shadow transition-colors hover:bg-primary hover:text-black focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary"
       >
-        Login
+        Ir a Login
       </Link>
     </div>
   );

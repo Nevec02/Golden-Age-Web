@@ -5,26 +5,24 @@ import Image from "next/image";
 
 const projects = [
   {
-    title: "Project title",
-    description: "Description of your first project",
-    imageUrl: "/img/cat.jpg",
-
+    title: "Producción de Video Corporativo",
+    description: "Un video corporativo innovador que destaca los valores y la misión de la empresa Alphabet.",
+    imageUrl: "/img/project00.jpg",
   },
   {
-    title: "Project title",
-    description: "Description of your second work",
-    imageUrl: "/img/cat.jpg",
-
+    title: "Documental Cultural",
+    description: "Documental sobre las tradiciones y cultura de la región Kikonga, capturando la esencia local.",
+    imageUrl: "/img/project01.jpg",
   },
   {
-    title: "Project title",
-    description: "Description of your third creation",
-    imageUrl: "/img/cat.jpg",
+    title: "Anuncio Publicitario",
+    description: "Anuncio publicitario para la campaña de lanzamiento del nuevo producto de la empresa DEF.",
+    imageUrl: "/img/project02.jpg",
   },
   {
-    title: "Project title",
-    description: "Description of your fourth endeavor",
-    imageUrl: "/img/cat.jpg",
+    title: "Cobertura de Evento en Vivo",
+    description: "Cobertura en vivo del evento anual de tecnología, mostrando las últimas innovaciones.",
+    imageUrl: "/img/project03.jpg",
   },
 ];
 
@@ -32,9 +30,9 @@ export default function PortfolioPage() {
   return (
     <div className="bg-black text-primary min-h-screen py-12">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold mb-2">Portfolio title</h1>
+        <h1 className="text-4xl font-bold mb-2">Nuestro Portafolio</h1>
         <p className="text-gray-500">
-          A subheading with a brief description of you, your work, and what you&apos;re all about—no biggie
+          Una breve descripción de nuestros trabajos audiovisuales y proyectos destacados en el sector profesional.
         </p>
       </div>
       <div className="container mx-auto grid gap-8 px-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">

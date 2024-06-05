@@ -26,8 +26,8 @@ export default function ContactPage() {
 
   return (
     <div className="bg-black text-primary min-h-screen flex flex-col items-center justify-center py-12">
-      <h2 className="text-4xl font-bold mb-2">Contact us</h2>
-      <p className="text-gray-500 mb-8">Subheading for description or instructions</p>
+      <h2 className="text-4xl font-bold mb-2">Contacta con nosotros</h2>
+      <p className="text-gray-500 mb-8">Rellene los datos y comentenos su problema o sugerencia</p>
       <form onSubmit={handleSubmit} className="w-full max-w-lg">
         {error && <p className="text-red-500 mb-4">{error}</p>}
         {success && <p className="text-green-500 mb-4">{success}</p>}
@@ -72,7 +72,7 @@ export default function ContactPage() {
           type="submit"
           className="w-full py-2 rounded-md bg-primary text-black font-bold"
         >
-          Submit
+          Enviar
         </button>
       </form>
     </div>

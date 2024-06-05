@@ -9,10 +9,10 @@ export default function Section() {
         <div className="container mx-auto grid gap-8 px-4 md:px-6 lg:grid-cols-2 lg:gap-12">
           <div className="space-y-8 xl:space-y-10 order-2 lg:order-1">
             <Image
-              alt="Serverless Computing"
+              alt="Servicios Audiovisuales"
               className="aspect-video w-full overflow-hidden rounded-xl object-cover"
               height={365}
-              src="/img/cat.jpg"
+              src="/img/img00.jpg"
               width={650}
             />
           </div>
@@ -20,20 +20,12 @@ export default function Section() {
             <div className="space-y-4 lg:space-y-6">
               <div className="space-y-2">
                 <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl xl:text-4xl">
-                  Unlock the Power of Serverless
+                  Descubre el Poder de Nuestros Servicios Audiovisuales
                 </h2>
                 <p className="max-w-[900px] text-primary md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Leverage the benefits of serverless compute without the overhead of infrastructure management. Deliver
-                  lightning-fast, personalized experiences to your users with ease.
+                  Aprovecha los beneficios de nuestros servicios audiovisuales sin la carga de gestionar infraestructuras. 
+                  Ofrece experiencias personalizadas y de alta calidad a tus usuarios con facilidad.
                 </p>
-              </div>
-              <div className="space-x-4">
-                <Link
-                  className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-black shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary disabled:pointer-events-none disabled:opacity-50"
-                  href="#"
-                >
-                  Get Started
-                </Link>
               </div>
             </div>
           </div>
@@ -46,28 +38,21 @@ export default function Section() {
             <div className="space-y-4 lg:space-y-6">
               <div className="space-y-2">
                 <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl xl:text-4xl">
-                  Accelerate Your Workflow
+                  Acelera Tu Flujo de Trabajo
                 </h2>
                 <p className="max-w-[900px] text-primary md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Improve your productivity with tools and services that allow you to focus on writing code, not managing infrastructure.
+                  Mejora tu productividad con herramientas y servicios que te permiten enfocarte en la creación de contenido, 
+                  no en la gestión de infraestructuras.
                 </p>
-              </div>
-              <div className="space-x-4">
-                <Link
-                  className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-black shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary disabled:pointer-events-none disabled:opacity-50"
-                  href="#"
-                >
-                  Learn More
-                </Link>
               </div>
             </div>
           </div>
           <div className="space-y-8 xl:space-y-10">
             <Image
-              alt="Accelerate Workflow"
+              alt="Acelera Tu Trabajo"
               className="aspect-video w-full overflow-hidden rounded-xl object-cover"
               height={365}
-              src="/img/cat.jpg"
+              src="/img/img01.jpg"
               width={650}
             />
           </div>
@@ -78,10 +63,10 @@ export default function Section() {
         <div className="container mx-auto grid gap-8 px-4 md:px-6 lg:grid-cols-2 lg:gap-12">
           <div className="space-y-8 xl:space-y-10 order-2 lg:order-1">
             <Image
-              alt="Scale Effortlessly"
+              alt="Escala Sin Esfuerzo"
               className="aspect-video w-full overflow-hidden rounded-xl object-cover"
               height={365}
-              src="/img/cat.jpg"
+              src="/img/img02.jpg"
               width={650}
             />
           </div>
@@ -89,19 +74,11 @@ export default function Section() {
             <div className="space-y-4 lg:space-y-6">
               <div className="space-y-2">
                 <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl xl:text-4xl">
-                  Scale Effortlessly
+                  Escala Sin Esfuerzo
                 </h2>
                 <p className="max-w-[900px] text-primary md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Seamlessly scale your applications to meet growing demands without the headache of provisioning resources.
+                  Escala tus proyectos audiovisuales para satisfacer la creciente demanda sin la complicación de gestionar recursos adicionales.
                 </p>
-              </div>
-              <div className="space-x-4">
-                <Link
-                  className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-black shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary disabled:pointer-events-none disabled:opacity-50"
-                  href="#"
-                >
-                  Get Started
-                </Link>
               </div>
             </div>
           </div>
@@ -114,28 +91,20 @@ export default function Section() {
             <div className="space-y-4 lg:space-y-6">
               <div className="space-y-2">
                 <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl xl:text-4xl">
-                  Enhance Security
+                  Mejora la Seguridad
                 </h2>
                 <p className="max-w-[900px] text-primary md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Keep your data and applications secure with our comprehensive security features and best practices.
+                  Mantén tus datos y proyectos seguros con nuestras completas características de seguridad y mejores prácticas.
                 </p>
-              </div>
-              <div className="space-x-4">
-                <Link
-                  className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-black shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary disabled:pointer-events-none disabled:opacity-50"
-                  href="#"
-                >
-                  Learn More
-                </Link>
               </div>
             </div>
           </div>
           <div className="space-y-8 xl:space-y-10">
             <Image
-              alt="Enhance Security"
+              alt="Mejora la Seguridad"
               className="aspect-video w-full overflow-hidden rounded-xl object-cover"
               height={365}
-              src="/img/cat.jpg"
+              src="/img/img03.jpg"
               width={650}
             />
           </div>

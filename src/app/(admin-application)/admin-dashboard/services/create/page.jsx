@@ -45,8 +45,8 @@ export default function CreateService() {
 
   return (
     <div className=" text-primary min-h-screen flex flex-col items-center justify-center py-12">
-      <h2 className="text-4xl font-bold mb-2">Create New Service</h2>
-      <p className="text-gray-500 mb-8">Enter the details for the new service below.</p>
+      <h2 className="text-4xl font-bold mb-2">Crear Nuevo Servicio</h2>
+      <p className="text-gray-500 mb-8">Escriba los datos del nuevo servicio.</p>
       <form onSubmit={handleSubmit} className="w-full max-w-lg">
         {error && <p className="text-red-500 mb-4">{error}</p>}
         {success && <p className="text-green-500 mb-4">{success}</p>}

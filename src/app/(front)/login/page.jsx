@@ -40,7 +40,7 @@ export default function LoginPage() {
       <form onSubmit={handleSubmit} className="w-full max-w-md text-center">
         <h2 className="text-2xl font-bold">Login</h2>
         <p className="text-gray-500 mb-8">
-          Enter your email to login to your account
+          Introduzca su email y contraseña para iniciar sesión
         </p>
         {error && <Chip color="danger" className="mb-4">{error}</Chip>}
         <div className="mb-4">
@@ -74,7 +74,7 @@ export default function LoginPage() {
         href={"/register"}
         className="inline-flex h-10 items-center justify-center rounded-md border border-primary px-8 text-sm font-medium text-primary shadow transition-colors hover:bg-primary hover:text-black focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary"
       >
-        Register
+        Registrarse
       </Link>
     </div>
   );

@@ -121,7 +121,7 @@ export default function Orders() {
 
   return (
     <div className="admin-dashboard">
-      <h1 className="text-2xl font-bold mb-6">Orders</h1>
+      <h1 className="text-2xl font-bold mb-6">Pedidos</h1>
       <div className="flex flex-col gap-4 mb-6">
         <div className="flex justify-between items-center gap-3">
           <Input
@@ -134,7 +134,7 @@ export default function Orders() {
           />
         </div>
         <div className="flex justify-between items-center">
-          <span className="text-default-400 text-small">Total {orders.length} orders</span>
+          <span className="text-default-400 text-small">Total {orders.length} Pedidos</span>
           <label className="flex items-center text-default-400 text-small">
             Rows per page:
             <select
@@ -173,11 +173,11 @@ export default function Orders() {
         }}
       >
         <TableHeader>
-          <TableColumn className="bg-secondary text-primary font-bold" key="id">Order ID</TableColumn>
-          <TableColumn className="bg-secondary text-primary font-bold" key="user_id">User ID</TableColumn>
-          <TableColumn className="bg-secondary text-primary font-bold" key="user_name">User Name</TableColumn>
-          <TableColumn className="bg-secondary text-primary font-bold" key="total_price">Total Price</TableColumn>
-          <TableColumn className="bg-secondary text-primary font-bold" key="created_at">Created At</TableColumn>
+          <TableColumn className="bg-secondary text-primary font-bold" key="id">ID Pedido</TableColumn>
+          <TableColumn className="bg-secondary text-primary font-bold" key="user_id">ID Usuario</TableColumn>
+          <TableColumn className="bg-secondary text-primary font-bold" key="user_name">Nombre Usuario</TableColumn>
+          <TableColumn className="bg-secondary text-primary font-bold" key="total_price">Total Precio</TableColumn>
+          <TableColumn className="bg-secondary text-primary font-bold" key="created_at">Creado el</TableColumn>
         </TableHeader>
         <TableBody items={items}>
           {(item) => (
