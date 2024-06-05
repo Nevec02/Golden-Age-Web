@@ -20,10 +20,10 @@ export default function TotalUsersCard() {
 
   return (
     <Card className="bg-black text-primary">
-      <CardHeader>
+      <CardHeader className="justify-center text-center">
         <h3 className="text-lg font-bold">Total Users</h3>
       </CardHeader>
-      <CardBody>
+      <CardBody className="justify-center text-center">
         <p className="text-3xl font-semibold">{users}</p>
       </CardBody>
     </Card>
