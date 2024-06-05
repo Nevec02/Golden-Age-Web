@@ -1,4 +1,6 @@
-# Proyecto de Gestión de Servicios
+# Proyecto de Gestión de Servicios por Ignacio Carmona Gonzalez
+
+**Github**: https://github.com/Nevec02/Golden-Age-Web
 
 Este proyecto es una aplicación web desarrollada con Next.js para la gestión de servicios. La aplicación permite a los administradores gestionar servicios, usuarios y pedidos, así como visualizar estadísticas clave. La aplicación está diseñada para ser intuitiva y fácil de usar, con una interfaz limpia y funcional.
 
@@ -30,9 +32,10 @@ Este proyecto es una aplicación web desarrollada con Next.js para la gestión d
 
 ### Configuración del Proyecto
 
-1. **Clonar el repositorio**:
+1. **Pasos**:
    ```bash
    cd golden_age
    npm install
    source golden_age.sql
+   Fill .env.local
    npm run dev
