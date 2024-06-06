@@ -65,6 +65,16 @@ export default function Services() {
     }
   }, []);
 
+  const deleteService = useCallback(async (serviceId) => {
+    try {
+      await axios.delete(`/api/Admin/services/${serviceId}`);
+      setServices(services => services.filter(service => service.id !== serviceId));
+    } catch (err) {
+      console.error('Failed to delete service:', err);
+      alert('Failed to delete service.');
+    }
+  }, []);
+
   const filteredItems = useMemo(() => {
     if (filterValue) {
       return services.filter(service =>
@@ -103,16 +113,21 @@ export default function Services() {
         );
       case "actions":
         return (
-          <Link href={`/admin-dashboard/services/${service.id}`} passHref legacyBehavior>
-            <Button isIconOnly size="sm" variant="light">
-              <EditIcon className="text-default-300" />
+          <>
+            <Link href={`/admin-dashboard/services/${service.id}`} passHref legacyBehavior>
+              <Button isIconOnly size="sm" variant="light">
+                <EditIcon className="text-default-300" />
+              </Button>
+            </Link>
+            <Button color="danger" size="sm" onClick={() => deleteService(service.id)}>
+              Delete
             </Button>
-          </Link>
+          </>
         );
       default:
         return cellValue;
     }
-  }, [toggleServiceStatus]);
+  }, [toggleServiceStatus, deleteService]);
 
   const onSearchChange = useCallback((value) => {
     setFilterValue(value);
@@ -146,9 +161,9 @@ export default function Services() {
             onValueChange={onSearchChange}
           />
           <Link href="/admin-dashboard/services/create">
-          <Button color="primary" endContent={<PlusIcon />}>
-            Crear nuevo
-          </Button>
+            <Button color="primary" endContent={<PlusIcon />}>
+              Crear nuevo
+            </Button>
           </Link>
         </div>
         <div className="flex justify-between items-center">

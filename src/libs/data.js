@@ -89,12 +89,18 @@ export const updateService = async (data, id) => {
 // region DELETE
 export const deleteService = async (id) => {
   try {
-    const sql = "DELETE FROM service WHERE id = ?";
-    await conn.query(sql, [id]);
+    // Primero elimina las filas relacionadas que puedan bloquear la eliminación
+    const deleteRelatedSql = "DELETE FROM order_detail WHERE service_id = ?";
+    await conn.query(deleteRelatedSql, [id]);
+
+    // Luego elimina el servicio principal
+    const deleteServiceSql = "DELETE FROM service WHERE id = ?";
+    await conn.query(deleteServiceSql, [id]);
   } catch (error) {
     console.log(error, "error deleting service");
   }
 };
+
 
 // region 2.USER
 
