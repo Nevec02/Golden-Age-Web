@@ -40,9 +40,3 @@ export async function DELETE(req, { params }) {
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }
-
-export const config = {
-  api: {
-    bodyParser: true,
-  },
-};
