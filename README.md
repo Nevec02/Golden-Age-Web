@@ -39,3 +39,9 @@ Este proyecto es una aplicación web desarrollada con Next.js para la gestión d
    source golden_age.sql
    Fill .env.local
    npm run dev
+
+
+admin@example.com
+admin1234
+
+password para clientes
