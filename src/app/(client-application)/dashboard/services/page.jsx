@@ -104,8 +104,9 @@ export default function ServicesPage() {
                 src={service.image}
               />
             </CardBody>
-            <CardFooter className="text-small justify-between">
+            <CardFooter className="text-small justify-between flex flex-col">
               <b>{service.name}</b>
+              <p>{service.description}</p>
               <p className="text-green-400">${service.price}</p>
             </CardFooter>
           </Card>
